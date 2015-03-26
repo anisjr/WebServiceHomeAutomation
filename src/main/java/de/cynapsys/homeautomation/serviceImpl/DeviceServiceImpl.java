@@ -10,14 +10,21 @@ import de.cynapsys.homeautomation.entity.Device;
 import de.cynapsys.homeautomation.service.DevicesService;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 
 /**
  *
  * @author mouadh
  */
+@Path("DeviceService")
 public class DeviceServiceImpl implements DevicesService{
 
     @Override
+    @Produces("application/xml")
+    @GET
     public List<Device> getAllDevices() {
         List<Device> listdevices = new ArrayList<>();
         
@@ -31,6 +38,8 @@ public class DeviceServiceImpl implements DevicesService{
     }
 
     @Override
+    @GET
+    @Path("/{param}")
     public boolean setValue(Device device, int value) {
         try{
             device.setCurrentValue(value);
@@ -42,7 +51,9 @@ public class DeviceServiceImpl implements DevicesService{
     }
 
     @Override
-    public int getValue(Device device) {
+    @GET
+    @Path("/{param}")
+    public int getValue(@PathParam("param") Device device) {
         System.out.println(device.getCurrentValue());
         return device.getCurrentValue();
     }

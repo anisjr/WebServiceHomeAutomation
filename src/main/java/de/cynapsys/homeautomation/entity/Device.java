@@ -6,10 +6,13 @@
 
 package de.cynapsys.homeautomation.entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author mouadh
  */
+@XmlRootElement
 public class Device {
     Long id;
     String name;
