@@ -6,13 +6,15 @@
 
 package de.cynapsys.homeautomation.entity;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author mouadh
  */
-@XmlRootElement
+@XmlRootElement(name = "device")
 public class Device {
     Long id;
     String name;
@@ -30,6 +32,7 @@ public class Device {
         this.currentValue = currentValue;
     }
 
+    @XmlAttribute
     public Long getId() {
         return id;
     }
@@ -38,6 +41,7 @@ public class Device {
         this.id = id;
     }
 
+    @XmlAttribute
     public String getName() {
         return name;
     }
@@ -46,6 +50,7 @@ public class Device {
         this.name = name;
     }
 
+    @XmlAttribute
     public String getDescription() {
         return description;
     }
@@ -58,6 +63,7 @@ public class Device {
         return currentValue;
     }
 
+    @XmlAttribute
     public void setCurrentValue(int currentValue) {
         this.currentValue = currentValue;
     }

@@ -19,14 +19,15 @@ import javax.ws.rs.Produces;
  *
  * @author mouadh
  */
-@Path("DeviceService")
+@Path("/deviceservice")
 public class DeviceServiceImpl implements DevicesService{
 
     @Override
-    @Produces("application/xml")
     @GET
+    @Path("/alldevices")
+    @Produces("application/json")
     public List<Device> getAllDevices() {
-        List<Device> listdevices = new ArrayList<>();
+        ArrayList<Device> listdevices = new ArrayList<>();
         
         Device d1 = new Device(1001L,"Device1","Device1 Description",00);
         Device d2 = new Device(1002L,"Device2","Device2 Description",50);
@@ -39,8 +40,8 @@ public class DeviceServiceImpl implements DevicesService{
 
     @Override
     @GET
-    @Path("/{param}")
-    public boolean setValue(Device device, int value) {
+    @Path("xx/{param}")
+    public boolean setValue(Long deviceID, int value) {
         try{
             device.setCurrentValue(value);
             return true;
@@ -50,12 +51,18 @@ public class DeviceServiceImpl implements DevicesService{
         }
     }
 
-    @Override
-    @GET
-    @Path("/{param}")
-    public int getValue(@PathParam("param") Device device) {
+
+    public int getValue(Long deviceID) {
         System.out.println(device.getCurrentValue());
         return device.getCurrentValue();
+    }
+
+    @Override
+    @GET
+    @Path("xx/{param}")
+    public Device getDeviceByID(Long deviceID) {
+        Device device = new Device(deviceID, "devideByID", "deviceByIDDescription", 80);
+        return device;
     }
     
 }

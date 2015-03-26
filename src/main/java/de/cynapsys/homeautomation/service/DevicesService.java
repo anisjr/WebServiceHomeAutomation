@@ -16,7 +16,8 @@ import java.util.List;
 public interface DevicesService {
     
     List<Device> getAllDevices();
-    int getValue(Device device);
-    boolean setValue(Device device, int value);
+    Device getDeviceByID(Long deviceID);
+    int getValue(Long deviceID);
+    boolean setValue(Long deviceID, int value);
     
 }
