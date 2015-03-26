@@ -42,6 +42,7 @@ public class DeviceServiceImpl implements DevicesService {
     @Override
     @GET
     @Path("/setValue/{varX}/{varY}")
+    
     public boolean setValue(@PathParam("varX") Long deviceID, @PathParam("varY") int value) {
         try {
             Device device = getDeviceByID(deviceID);
@@ -64,6 +65,7 @@ public class DeviceServiceImpl implements DevicesService {
     @Override
     @GET
     @Path("getDeviceByID/{param}")
+    @Produces("application/json")
     public Device getDeviceByID(@PathParam("param") Long deviceID) {
         Device device = new Device(deviceID, "devideByID", "deviceByIDDescription", 80);
         return device;
